@@ -8,6 +8,7 @@
  *                    the hexagon
  *       key 'k|K' -> Show one kaleidoscope only
  *       key 't|T' -> Show the texture only
+ *       key 'm|M' -> Change texture
  *********************************************************/ 
 
 "use strict";
@@ -33,7 +34,7 @@ let currTexture;
 let textures = [];
 
 
-
+//##### ##### ##### ##### kaleidoskop ##### ##### ##### ##### #####  
 function preload() 
 {
     dogs_sw = loadImage('dogs_sw.png');
@@ -51,7 +52,6 @@ function setup()
     background(0, 0, 90);
 
     gGrid = new Grid();
-    gGrid.setup();
     gDisplaymode = 1;
 
     currTexture = dogs_bt;   
@@ -125,13 +125,7 @@ class Grid
         this.cam;
     }
 
-    setup()
-    {
-        const gl = document.querySelector('canvas').getContext('webgl');
-        gl.enable( gl.BLEND );
-        gl.blendEquation( gl.FUNC_ADD );
-        gl.blendFunc( gl.SRC_ALPHA, gl.DST_ALPHA );
-    }
+    
 
     computeWidthHeight()
     {
@@ -282,8 +276,6 @@ class StoneCluster
         this.graphics.colorMode(HSB);
 		this.graphics.noStroke();
 		
-		//TODO
-		//this.graphics.texture(image);
 
         this.angle = 0.5;
         this.translateStep = 0.75;
@@ -300,7 +292,7 @@ class StoneCluster
         this.graphics.push()
             // Rotation around the origin, not the pivot
 			// of the box!
-			//TODO
+            //TODO
             this.graphics.texture(currTexture);
             this.graphics.rotateX(this.angle);
             this.graphics.rotateY(this.angle * 0.75);
