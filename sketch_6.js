@@ -67,6 +67,7 @@ function setup()
     btn.textContent = "start recording";
     document.body.appendChild(btn);
     btn.onclick = record;
+    btn.click();
 }
 
 function draw()
@@ -75,18 +76,8 @@ function draw()
     gGrid.show(gDisplaymode);
 
     //capturing
-    // angleMode(DEGREES);
-    // let angle = (frameCount*4)%360;
-    // if(angle == 0){
-    //     counter ++;
-    // }
-
     if(capturer){
         capturer.capture(document.querySelector('canvas'));  
-        if(counter == 8){
-        frameRate(0);
-        btn.click();
-        }
     }
 }
 
