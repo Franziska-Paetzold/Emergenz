@@ -33,6 +33,11 @@ let dogs_bt;
 let currTexture;
 let textures = [];
 
+//capturing
+let capturer;
+let btn;
+let counter = 1;
+
 
 //##### ##### ##### ##### kaleidoskop ##### ##### ##### ##### #####  
 function preload() 
@@ -55,12 +60,34 @@ function setup()
     gDisplaymode = 1;
 
     currTexture = dogs_bt;   
+
+    //capturing
+    frameRate(60);
+    btn = document.createElement('button');
+    btn.textContent = "start recording";
+    document.body.appendChild(btn);
+    btn.onclick = record;
 }
 
 function draw()
 {
     background(0, 0, 100);
     gGrid.show(gDisplaymode);
+
+    //capturing
+    // angleMode(DEGREES);
+    // let angle = (frameCount*4)%360;
+    // if(angle == 0){
+    //     counter ++;
+    // }
+
+    if(capturer){
+        capturer.capture(document.querySelector('canvas'));  
+        if(counter == 8){
+        frameRate(0);
+        btn.click();
+        }
+    }
 }
 
 // Capture certain keys to
@@ -317,3 +344,21 @@ class StoneCluster
 
     }
 }
+
+//capturing
+function record() {
+    
+    capturer = new CCapture({ format: 'webm' , framerate: 60} );
+    console.log("start capturing");
+    capturer.start();
+    btn.textContent = 'stop recording';
+  
+    btn.onclick = e => {
+      capturer.stop();
+      capturer.save();
+      capturer = null;
+  
+      btn.textContent = 'start recording';
+      btn.onclick = record;
+    };
+  }
