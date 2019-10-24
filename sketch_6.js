@@ -53,7 +53,7 @@ function setup()
 {
     displayDensity(1);
     colorMode(HSB);
-    createCanvas(1350, 1200, WEBGL);
+    createCanvas(1600, 1200, WEBGL);
     background(0, 0, 90);
 
     gGrid = new Grid();
@@ -62,7 +62,7 @@ function setup()
     currTexture = dogs_bt;   
 
     //capturing
-    frameRate(60);
+    frameRate(30);
     btn = document.createElement('button');
     btn.textContent = "start recording";
     document.body.appendChild(btn);
@@ -339,7 +339,7 @@ class StoneCluster
 //capturing
 function record() {
     
-    capturer = new CCapture({ format: 'webm' , framerate: 60} );
+    capturer = new CCapture({ format: 'webm' , framerate: 30} );
     console.log("start capturing");
     capturer.start();
     btn.textContent = 'stop recording';
