@@ -9,6 +9,7 @@
  *       key 'k|K' -> Show one kaleidoscope only
  *       key 't|T' -> Show the texture only
  *       key 'm|M' -> Change texture
+ *       key 's|S' -> start & stop recording
  *********************************************************/ 
 
 "use strict";
@@ -30,6 +31,14 @@ let dogs_rg;
 //beere türkis
 let dogs_bt;
 
+//grün beere
+let dogs_gb;
+let dogs_gb_2;
+//gelb rot
+let dogs_gr;
+//dogs türkis
+let dogs_t;
+
 let currTexture;
 let textures = [];
 
@@ -46,7 +55,12 @@ function preload()
     dogs_rb = loadImage('dogs_rb.png');
     dogs_rg = loadImage('dogs_rg.png');
     dogs_bt = loadImage('dogs_bt.png');
-    textures =  [dogs_rb, dogs_rg, dogs_bt];
+
+    dogs_gb = loadImage('dogs_gb.png');
+    dogs_gb_2 = loadImage('dogs_gb_2.png');
+    dogs_gr = loadImage('dogs_gr.png');
+    dogs_t = loadImage('dogs_t.png');
+    textures =  [dogs_rb, dogs_rg, dogs_bt, dogs_gb, dogs_gb_2, dogs_gr, dogs_t, dogs_sw];
 }
 
 function setup() 
@@ -70,7 +84,7 @@ function setup()
     currTexture = dogs_bt;   
 
     //start capturing
-    btn.click();
+    //btn.click();
 }
 
 function draw()
@@ -109,6 +123,40 @@ function keyPressed()
     {
         btn.click();
     }
+    else if (key == '1' ) // Change Texture (color)
+    {
+        currTexture = textures[0];
+    }
+    else if (key == '2' ) // Change Texture (color)
+    {
+        currTexture = textures[1];
+    }
+    else if (key == '3' ) // Change Texture (color)
+    {
+        currTexture = textures[2];
+    }
+    else if (key == '4' ) // Change Texture (color)
+    {
+        currTexture = textures[3];
+    }
+    else if (key == '5' ) // Change Texture (color)
+    {
+        currTexture = textures[4];
+    }
+    else if (key == '6' ) // Change Texture (color)
+    {
+        currTexture = textures[5];
+    }
+    else if (key == '7' ) // Change Texture (color)
+    {
+        currTexture = textures[6];
+    }
+    else if (key == '8' ) // Change Texture (color)
+    {
+        currTexture = textures[7];
+    }
+
+
 }
 
 function changeTexture()
